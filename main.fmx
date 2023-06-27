@@ -1,0 +1,204 @@
+object HeaderFooterForm: THeaderFooterForm
+  Left = 0
+  Top = 0
+  Caption = 'Header Footer Form'
+  ClientHeight = 667
+  ClientWidth = 384
+  Position = ScreenCenter
+  FormFactor.Width = 1440
+  FormFactor.Height = 900
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Header: TToolBar
+    Size.Width = 384.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object HeaderLabel: TLabel
+      Align = Contents
+      Size.Width = 384.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toollabel'
+      TextSettings.HorzAlign = Center
+      Text = 'Country Search'
+    end
+  end
+  object LytSearch: TLayout
+    Align = Top
+    Padding.Left = 5.000000000000000000
+    Padding.Top = 5.000000000000000000
+    Padding.Right = 5.000000000000000000
+    Padding.Bottom = 5.000000000000000000
+    Position.Y = 44.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object Button1: TButton
+      Action = ActSearchCountry
+      Align = Right
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 272.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 107.000000000000000000
+      Size.Height = 39.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+    object edtSearch: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Client
+      TabOrder = 0
+      Margins.Right = 5.000000000000000000
+      Size.Width = 262.000000000000000000
+      Size.Height = 39.000000000000000000
+      Size.PlatformDefault = False
+      CharCase = ecUpperCase
+    end
+  end
+  object LytCountryInfo: TLayout
+    Align = Top
+    Position.Y = 93.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 160.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object Label1: TLabel
+      Align = Top
+      StyledSettings = [Family, Size, FontColor]
+      Size.Width = 384.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.HorzAlign = Center
+      Text = 'Name'
+      TabOrder = 5
+    end
+    object Label2: TLabel
+      Align = Top
+      StyledSettings = [Family, Size, FontColor]
+      Position.Y = 100.000000000000000000
+      Size.Width = 384.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.HorzAlign = Center
+      Text = 'Population'
+      TabOrder = 4
+    end
+    object Label3: TLabel
+      Align = Top
+      StyledSettings = [Family, Size, FontColor]
+      Position.Y = 50.000000000000000000
+      Size.Width = 384.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.HorzAlign = Center
+      Text = 'Capital'
+      TabOrder = 3
+    end
+    object lblName: TLabel
+      Align = Top
+      Position.Y = 25.000000000000000000
+      Size.Width = 384.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      TabOrder = 0
+    end
+    object lblCapital: TLabel
+      Align = Top
+      Position.Y = 75.000000000000000000
+      Size.Width = 384.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      TabOrder = 1
+    end
+    object lblPopulation: TLabel
+      Align = Top
+      Position.Y = 125.000000000000000000
+      Size.Width = 384.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      TabOrder = 2
+    end
+  end
+  object ListView1: TListView
+    ItemAppearanceClassName = 'TListItemAppearance'
+    ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Client
+    Size.Width = 384.000000000000000000
+    Size.Height = 414.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    ItemAppearanceObjects.ItemObjects.Text.Width = 335.000000000000000000
+    ItemAppearanceObjects.ItemObjects.Text.Height = 44.000000000000000000
+    ItemAppearanceObjects.ItemObjects.Text.PlaceOffset.X = 6.000000000000000000
+    ItemAppearanceObjects.ItemObjects.Accessory.Visible = False
+    SearchVisible = True
+  end
+  object ActionList1: TActionList
+    Left = 320
+    Top = 408
+    object ActSearchCountry: TAction
+      Text = 'Search'
+      OnExecute = ActSearchCountryExecute
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = dmCountry.Country
+    ScopeMappings = <>
+    Left = 320
+    Top = 472
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 316
+    Top = 589
+    object LinkPropertyToFieldText: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'name'
+      Component = lblName
+      ComponentProperty = 'Text'
+    end
+    object LinkPropertyToFieldText2: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'population'
+      Component = lblPopulation
+      ComponentProperty = 'Text'
+    end
+    object LinkPropertyToFieldText3: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'capital'
+      Component = lblCapital
+      ComponentProperty = 'Text'
+    end
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'name'
+      Control = ListView1
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillHeaderFieldName = 'state_or_region'
+      FillBreakGroups = <>
+    end
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = dmCountry.Cities
+    ScopeMappings = <>
+    Left = 320
+    Top = 528
+  end
+end
